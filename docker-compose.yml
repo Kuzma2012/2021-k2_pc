@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  postgres_1:
+    container_name: postgres-fly-booking
+    image: "postgres" 
+    env_file:
+      - sql_init/database_config.env
+    command:
+      - "postgres"
+      - "-c"
+      - "max-prepared-transactions=5"
+    volumes:
+      - ./sql_init/init_fly_booking.sql:/docker-entrypoint-initdb.d/init_fly_booking.sql      
+    ports:
+      - 5432:5432
+
+  postgres_2:
+    container_name: postgres-hotel-booking
+    image: "postgres" 
+    env_file:
+      - sql_init/database_config.env
+    command:
+      - "postgres"
+      - "-c"
+      - "max-prepared-transactions=5"
+    volumes:
+      - ./sql_init/init_hotel_booking.sql:/docker-entrypoint-initdb.d/init_hotel_booking.sql
+    ports:
+      - 5433:5432
+
+  postgres_3:
+    container_name: postgres-account
+    image: "postgres" 
+    env_file:
+      - sql_init/database_config.env
+    command:
+      - "postgres"
+      - "-c"
+      - "max-prepared-transactions=5"
+    volumes:
+      - ./sql_init/init_account.sql:/docker-entrypoint-initdb.d/init_account.sql
+    ports:
+      - 5434:5432
+
+volumes:
+  sql_init:
