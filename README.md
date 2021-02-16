@@ -1,6 +1,6 @@
 #Distributed Databases 2021 - Two Phase Commit
 #Implementation of two-phase commit protocol
-[diagram](https://github.com/Kuzma2012/2021-k2_pc/master/diagram.jpg)
+![diagram](https://github.com/Kuzma2012/2021-k2_pc/blob/master/diagram.jpg)
 # Description
 - PostgreSQL database in Docker container
 - Implementation on Python using psycopg2
